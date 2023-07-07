@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block nav %}
+<h1 class="bg-secondary text-dark text-center"> EgADGETS</h1>
+<h3>Welcome,{{request.user.first_name}} {{request.user.last_name}}</h3>
+<!-- {{data}} -->
+{% if messages %}
+  {% for i in messages %}
+  {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{i}}</strong>
+  </div>
+  {%endif%}
+
+  {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{i}}</strong>
+  </div>
+  {%endif%}
+  {%endfor%}
+  {%endif%}
+<div class="row jumbotron p-3">
+  
+  {% for i in data %}
+  <div class="card col-4 mb-3">
+    <img src=" {{i.image.url}}" class="card-img-top" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{i.name}}</h5>
+      <p class="card-text">{{i.category}}</p>
+      <p class="card-text">RS:{{i.price}}</p>
+      <a href="{% url 'pdet' i.id  %}" class="stretched-link"></a>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock nav%}

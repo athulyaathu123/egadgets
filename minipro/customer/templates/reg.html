@@ -1,0 +1,22 @@
+{% extends 'index.html'%}
+
+{% block base %}
+    <!-- <h1 align="center"class="bg-success text-white">User Registration</h1> -->
+    <form class="regform" action="" method="post">
+      <h3>Registration</h3>
+        {%csrf_token%}
+        <table class="table">
+            {{form.as_table}}
+        </table>
+        <div class="text-center">
+        <button class="btn btn-success ">Submit</button>
+      </div>
+      <div class="go">Already registerd!!!
+        <a href="{% url 'login'%}">Login</a>
+
+      </div>
+    </form>
+
+
+{% endblock base %}
+  
